@@ -15,4 +15,14 @@ imputer = Imputer(missing_values='NaN', strategy ='mean', axis = 0)
 imputer = imputer.fit(X[:,1:3])
 X[:,1:3] = imputer.transform(X[:,1:3])
 
+#Encloding categorical data
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+labelencoder_X = LabelEncoder()
+X[:,0] = labelencoder_X.fit_transform(X[:,0]) #Lable converted in to integer
+onehotencoder_X = OneHotEncoder(categorical_features = [0]); #lables converted in to binary columns
+X= onehotencoder_X.fit_transform(X).toarray()
+labelencoder_Y = LabelEncoder()
+Y = labelencoder_Y.fit_transform(Y)
+
+
 
