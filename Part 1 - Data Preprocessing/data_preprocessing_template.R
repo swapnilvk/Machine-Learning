@@ -1,7 +1,6 @@
 #Data preprocessing 
 
 #importing datset
-
 dataset = read.csv('Data.csv')
 
 #Taking care of missing data
