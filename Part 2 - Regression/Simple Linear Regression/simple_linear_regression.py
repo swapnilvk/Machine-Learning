@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 #Simple Linear Regression
 
+#@author: Swapnil Kulkarni
 
 import numpy as np
 import matplotlib.pyplot as plt
