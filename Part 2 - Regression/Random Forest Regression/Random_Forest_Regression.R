@@ -1,4 +1,4 @@
-# Decision Tree Regression
+# Random Forest Regression
 
 #@author: Swapnil Vivek Kulkarni
 
@@ -6,18 +6,18 @@
 dataset = read.csv('Position_Salaries.csv')
 dataset = dataset[2:3]
 
-# Fitting the Decision Tree Regression Model to the dataset
-install.packages('rpart')
-library(rpart)
-regressor = rpart(formula = Salary ~.,
-                  data = dataset,
-                  control = rpart.control(minsplit = 1))
+# Fitting the Random Forest Regression Model to the dataset
+install.packages('randomForest')
+library(randomForest)
+regressor = randomForest(x = dataset[1],
+                         y = dataset$Salary,
+                         ntree = 500)
 
 # Predicting a new result
 y_pred = predict(regressor, data.frame(Level = 6.5))
 
 
-# Visualising the Decision Tree Regression Model results (for higher resolution and smoother curve)
+# Visualising the Random Forest Regression Model results (for higher resolution and smoother curve)
 # install.packages('ggplot2')
 library(ggplot2)
 x_grid = seq(min(dataset$Level), max(dataset$Level), 0.01)
@@ -26,6 +26,6 @@ ggplot() +
              colour = 'red') +
   geom_line(aes(x = x_grid, y = predict(regressor, newdata = data.frame(Level = x_grid))),
             colour = 'blue') +
-  ggtitle('Truth or Bluff (Decision Tree Regression)') +
+  ggtitle('Truth or Bluff (Random Forest Regression)') +
   xlab('Level') +
   ylab('Salary')
